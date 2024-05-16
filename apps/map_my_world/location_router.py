@@ -20,15 +20,27 @@ from apps.location.schema.response.location import (
 )
 from apps.location.schema.types.location import LocationType
 from apps.utils.decorator import handler_exception
+from apps.utils.tags import MetadataTag
 
 logger = logging.getLogger(__name__)
 
 location_router = APIRouter()
 
 
+recommend_locations_tag = MetadataTag(
+    name="Recommend Locations",
+    description=(
+        """This query is responsible for listing, based on the selected
+        category, recommended items to explore for their information
+        """
+    ),
+)
+
+
 @location_router.get(
     "/recommend-locations",
     status_code=status.HTTP_200_OK,
+    tags=[recommend_locations_tag.name],
 )
 async def recommend_locations(category_id: int) -> LocationListPayload:
     log_tag = "Recommend Locations"
@@ -52,9 +64,22 @@ async def recommend_locations(category_id: int) -> LocationListPayload:
     )
 
 
+location_detail_tag = MetadataTag(
+    name="Location Detail",
+    description=(
+        """This query is responsible for detailing a location by its ID 
+        and category. Additionally, in the background, it handles recording
+        views to determine which sites are the most and least searched on
+        the platform.
+        """
+    ),
+)
+
+
 @location_router.get(
     "/location-{location_id}/category-{category_id}",
     status_code=status.HTTP_200_OK,
+    tags=[location_detail_tag.name],
 )
 async def location_detail(
     location_id: int, category_id: int, bg_tasks: BackgroundTasks
@@ -89,9 +114,20 @@ async def location_detail(
     )
 
 
+add_location_tag = MetadataTag(
+    name="Add Location",
+    description=(
+        """This resource is responsible for registering a location with
+        all the categories that the user can select.
+        """
+    ),
+)
+
+
 @location_router.post(
     "/add-locations",
     status_code=status.HTTP_201_CREATED,
+    tags=[add_location_tag.name],
 )
 @handler_exception(payload_class=CreateLocationPayload, log_tag="Add Location")
 async def add_location(input: LocationAddInput) -> CreateLocationPayload:

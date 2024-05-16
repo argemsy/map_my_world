@@ -20,10 +20,24 @@ application = get_asgi_application()
 from fastapi import FastAPI
 
 # Own Libraries
-from apps.map_my_world.category_router import category_router
-from apps.map_my_world.location_router import location_router
+from apps.map_my_world.category_router import add_category_tag, category_router
+from apps.map_my_world.location_router import (
+    add_location_tag,
+    location_detail_tag,
+    location_router,
+    recommend_locations_tag,
+)
 
-fastapp = FastAPI()
+metadata_tags = [
+    add_category_tag,
+    add_location_tag,
+    recommend_locations_tag,
+    location_detail_tag,
+]
+
+fastapp = FastAPI(
+    openapi_tags=[tag.dict(by_alias=True) for tag in metadata_tags],
+)
 
 
 fastapp.include_router(
