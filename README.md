@@ -53,10 +53,14 @@ map_my_world_postgres   postgres:latest     "docker-entrypoint.s…"   postgres 
 map_my_world_web        map_my_world-web    "bash -c 'python3 ma…"   web                 3 seconds ago       Up 2 seconds        0.0.0.0:8000->8000/tcp
 ```
 
-The microservices are running at:
+#### The microservices are running at:
 
 - API: [http://localhost:8500/docs](http://localhost:8500/docs)
 - Admin: [http://localhost:8000/admin](http://localhost:8500/admin/)
+
+#### Resources
+
+![DER](diagrams/resources.png "DER")
 
 5. Create SuperUser
 
