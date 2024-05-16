@@ -59,6 +59,7 @@ pyenv-install: ## Install python dependencies
 	poetry config virtualenvs.create false
 	poetry install --no-root --without dev
 pyenv-init: pyenv-python pyenv-create-env pyenv-env ## Initialize python env
-
+bulk-loaddata: ## regenerate fixture over all models
+	docker exec -it map_my_world_web python3 manage.py loaddata apps/utils/fixtures/json/*.json
 collectstatic:
 	docker exec -it map_my_world_web python3 manage.py collectstatic --noinput

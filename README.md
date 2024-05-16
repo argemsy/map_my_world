@@ -12,7 +12,7 @@ In order for the project correctly work, please consider you to use::
 1. First, clone this repository:
 
 ```bash
-git clone
+git clone https://github.com/argemsy/map_my_world.git
 ```
 
 2. Copy the environment vars:
@@ -58,13 +58,25 @@ The microservices are running at:
 - API: [http://localhost:8500/docs](http://localhost:8500/docs)
 - Admin: [http://localhost:8000/admin](http://localhost:8500/admin/)
 
-5. Run the linters:
+5. Create SuperUser
+
+```bash
+make superuser
+```
+
+6. Load data dummy
+
+```bash
+make bulk-loaddata
+```
+
+7. Run the linters:
 
 ```bash
 make lint
 ```
 
-6. Managing dependencies with Poetry:
+8. Managing dependencies with Poetry:
 
 ```bash
 ### To add
@@ -73,3 +85,7 @@ docker-compose run --rm api poetry add <dependenciy_name>
 ### To remove
 docker-compose run --rm api poetry remove <dependenciy_name>
 ```
+
+## Modelado de datos
+
+![DER](diagrams/DER.png "DER")
