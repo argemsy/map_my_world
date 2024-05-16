@@ -7,6 +7,13 @@ In order for the project correctly work, please consider you to use::
 - Docker version >= 23.0.5, build bc4487a
 - Docker Compose >= version v2.17.3
 
+## Stack
+
+- FastAPI
+- Django [orm]
+- Pydantic
+- FactoryBoy
+
 # Installation
 
 1. First, clone this repository:

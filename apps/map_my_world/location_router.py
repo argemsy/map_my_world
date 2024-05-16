@@ -30,8 +30,13 @@ location_router = APIRouter()
 recommend_locations_tag = MetadataTag(
     name="Recommend Locations",
     description=(
-        """This query is responsible for listing, based on the selected
-        category, recommended items to explore for their information
+        """This function recommends locations based on the provided category
+        ID and recent total reviews. It retrieves locations that belong to the
+        specified category and have been updated within the last 30 days.
+        Recommendations are sorted based on the total number of reviews received
+        in the past 30 days. The function returns a payload containing metadata
+        about the total count of recommended locations and a list of recommended
+        locations, including their IDs, names, cities, countries, and categories.
         """
     ),
 )
@@ -67,10 +72,11 @@ async def recommend_locations(category_id: int) -> LocationListPayload:
 location_detail_tag = MetadataTag(
     name="Location Detail",
     description=(
-        """This query is responsible for detailing a location by its ID 
-        and category. Additionally, in the background, it handles recording
-        views to determine which sites are the most and least searched on
-        the platform.
+        """This resource retrieves details of a location based on its ID and category.
+        It checks if the location exists and belongs to the specified category.
+        If found, it retrieves additional details such as city and categories.
+        It also adds a background task to register views for the location.
+        If the location is not found, it returns a 404 NOT FOUND response.
         """
     ),
 )
@@ -117,8 +123,12 @@ async def location_detail(
 add_location_tag = MetadataTag(
     name="Add Location",
     description=(
-        """This resource is responsible for registering a location with
-        all the categories that the user can select.
+        """This function adds a new location with the provided input data.
+        It first retrieves the categories associated with the location.
+        If the categories are not found, it raises an AssertionError.
+        Otherwise, it creates a new location instance and associates it
+        with the retrieved categories.
+        It returns a payload containing the created location and a success message.
         """
     ),
 )

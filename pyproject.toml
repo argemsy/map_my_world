@@ -2,7 +2,7 @@
 name = "map-my-world"
 version = "0.1.0"
 description = ""
-authors = ["Argenis Vargas <argenis.vargas@crehana.com>"]
+authors = ["Argenis Vargas <argenis1818@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

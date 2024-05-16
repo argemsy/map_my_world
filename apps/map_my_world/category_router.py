@@ -19,13 +19,12 @@ logger = logging.getLogger(__name__)
 add_category_tag = MetadataTag(
     name="Add Categories",
     description=(
-        """Add a new category based on the input data =>
-        [
-            CategoryAddInput(
-                name='New Category',
-                description='Description of the category'
-            )
-        ]
+        """This function adds a new category with the provided input data.
+        It first retrieves the category process instance.
+        It then extracts the data from the input and attempts to create
+        a new category instance.
+        The function returns a payload containing the created category
+        and a success message.
         """
     ),
 )
