@@ -6,7 +6,10 @@ from pydantic import BaseModel, Field
 
 # Own Libraries
 from apps.location.schema.types.category import CategoryType
+from apps.location.schema.types.city import CityType
 from apps.map_my_world.models import Category as CategoryModel
+from apps.map_my_world.models import City as CityModel
+from apps.map_my_world.models import Country as CountryModel
 from apps.map_my_world.models import Location as LocationModel
 from config.env_vars import settings
 
@@ -17,6 +20,7 @@ class LocationType(BaseModel):
     latitude: float
     longitude: float
     categories_set: list[CategoryType] = Field(default_factory=list)
+    city: CityType | None = None
     total_reviews: int | None = 0
     url_detail: str | None = None
 
@@ -25,6 +29,7 @@ class LocationType(BaseModel):
         cls,
         instance: LocationModel,
         category_id: int,
+        city_tuple: tuple[CityModel, CountryModel],
         categories_list: Iterable[CategoryModel] | None = None,
     ) -> "LocationType":
 
@@ -36,12 +41,19 @@ class LocationType(BaseModel):
             latitude=instance.latitude,
             longitude=instance.longitude,
             categories_set=categories,
+            city=cls.get_city_type(city_tuple=city_tuple),
             url_detail=cls.get_url_detail(
                 location_id=instance.id, category_id=category_id
             ),
             # annotate field's
             total_reviews=getattr(instance, "total_reviews", 0),
         )
+
+    @staticmethod
+    def get_city_type(city_tuple: tuple[CityModel, CountryModel]) -> CityType | None:
+        if city_tuple:
+            city, country = city_tuple
+            return CityType.from_db_model(instance=city, country=country)
 
     @staticmethod
     def get_url_detail(location_id: int, category_id: int) -> str:

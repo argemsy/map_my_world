@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 from apps.location.bg_tasks.register_location_view import register_views
 from apps.location.process import LocationProcess
 from apps.location.process.category import CategoryProcess
+from apps.location.process.city import CityProcess
 from apps.location.process.location_category import LocationCategoryProcess
 from apps.location.schema.inputs.location import LocationAddInput
 from apps.location.schema.response.interface import Response
@@ -34,10 +35,12 @@ async def recommend_locations(category_id: int) -> LocationListPayload:
     logger.debug(f"***{log_tag}***")
     process = LocationProcess()
     category_process = LocationCategoryProcess()
+    city_process = CityProcess()
 
     if not (
         locations := await process.recommend_locations(
             category_process=category_process,
+            city_process=city_process,
             category_id=category_id,
         )
     ):
@@ -66,15 +69,17 @@ async def location_detail(
     }
 
     if location := await process.get_object(**kwargs):
-
+        city_process = CityProcess()
         category_process = LocationCategoryProcess()
         categories_index_dict = await category_process.get_categories_index_dict()
 
         bg_tasks.add_task(register_views, location_id, category_id)
+        city_tuple_dict = await city_process.get_city_and_country()
 
         return LocationType.from_db_model(
             instance=location,
             category_id=category_id,
+            city_tuple=city_tuple_dict.get(location.city_id),
             categories_list=categories_index_dict.get(location.id),
         )
 
