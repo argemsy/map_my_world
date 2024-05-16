@@ -1,0 +1,62 @@
+[
+  {
+    "model": "map_my_world.category",
+    "pk": 1,
+    "fields": {
+      "created_at": "2024-05-16T18:50:14.974Z",
+      "updated_at": "2024-05-16T19:01:42.730Z",
+      "is_deleted": false,
+      "name": "Históricos y culturales",
+      "slug": "historicos-y-culturales",
+      "description": "históricos y culturales"
+    }
+  },
+  {
+    "model": "map_my_world.category",
+    "pk": 2,
+    "fields": {
+      "created_at": "2024-05-16T18:50:39.161Z",
+      "updated_at": "2024-05-16T19:02:24.816Z",
+      "is_deleted": false,
+      "name": "Naturaleza y paisajes",
+      "slug": "naturaleza-y-paisajes",
+      "description": "Naturaleza y paisajes"
+    }
+  },
+  {
+    "model": "map_my_world.category",
+    "pk": 3,
+    "fields": {
+      "created_at": "2024-05-16T18:50:49.139Z",
+      "updated_at": "2024-05-16T19:02:46.705Z",
+      "is_deleted": false,
+      "name": "Playas y costas",
+      "slug": "Playas-y-costas",
+      "description": "Playas y costas"
+    }
+  },
+  {
+    "model": "map_my_world.category",
+    "pk": 4,
+    "fields": {
+      "created_at": "2024-05-16T18:51:06.709Z",
+      "updated_at": "2024-05-16T19:03:09.880Z",
+      "is_deleted": false,
+      "name": "Ciudades icónicas",
+      "slug": "ciudades-iconicas",
+      "description": "Ciudades icónicas"
+    }
+  },
+  {
+    "model": "map_my_world.category",
+    "pk": 5,
+    "fields": {
+      "created_at": "2024-05-16T19:03:42.329Z",
+      "updated_at": "2024-05-16T19:03:42.329Z",
+      "is_deleted": false,
+      "name": "Aventura y deportes",
+      "slug": "aventura-y-deportes",
+      "description": "Aventura y deportes"
+    }
+  }
+]
