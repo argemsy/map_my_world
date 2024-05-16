@@ -1,0 +1,64 @@
+version: '3.8'
+
+x-common:
+  default_environment_args: &default-environment-args
+    ### Default ###
+    COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME}
+    DATABASE_URL: ${DATABASE_URL}
+    DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}
+    SECRET_KEY: ${SECRET_KEY}
+    DJANGO_ALLOW_ASYNC_UNSAFE: ${DJANGO_ALLOW_ASYNC_UNSAFE}
+
+services:
+  api:
+    container_name: ${COMPOSE_PROJECT_NAME}_api
+    ports:
+      - 8500:8500
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: development-api
+      ssh: ["default"]
+    volumes:
+      - ./:/app/
+      - /app/.venv
+    environment:
+      <<: *default-environment-args
+    depends_on:
+      - postgres
+
+  web:
+    ports:
+      - 8000:8000
+    container_name: ${COMPOSE_PROJECT_NAME}_web
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: development-web
+      ssh: ["default"]
+    volumes:
+      - ./:/app/
+      - /app/.venv
+      - static_volume:/app/static
+    environment:
+      <<: *default-environment-args
+    depends_on:
+      - postgres
+    command: bash -c "python3 manage.py runserver 0:8000"
+
+  postgres:
+    image: postgres:latest
+    container_name: ${COMPOSE_PROJECT_NAME}_postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  .:
+  pg_data:
+  static_volume:
