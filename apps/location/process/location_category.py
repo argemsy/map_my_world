@@ -2,9 +2,9 @@
 from typing import Iterable
 
 # Own Libraries
-from apps.map_my_world.models import Category as CategoryModel
-from apps.map_my_world.models import Location as LocationModel
-from apps.map_my_world.models import LocationCategory as LocationCategoryModel
+from apps.core.models import Category as CategoryModel
+from apps.core.models import Location as LocationModel
+from apps.core.models import LocationCategory as LocationCategoryModel
 from apps.utils.decorator import async_database
 
 

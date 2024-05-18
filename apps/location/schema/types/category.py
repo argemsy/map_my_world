@@ -2,7 +2,7 @@
 from pydantic import BaseModel
 
 # Own Libraries
-from apps.map_my_world.models import Category
+from apps.core.models import Category
 
 
 class CategoryType(BaseModel):

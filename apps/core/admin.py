@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 # Own Libraries
-from apps.map_my_world.models import (
+from apps.core.models import (
     Category,
     City,
     Country,

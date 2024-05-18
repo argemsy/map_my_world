@@ -2,8 +2,8 @@
 import logging
 
 # Own Libraries
-from apps.map_my_world.models import City as CityModel
-from apps.map_my_world.models import Country as CountryModel
+from apps.core.models import City as CityModel
+from apps.core.models import Country as CountryModel
 from apps.utils.decorator import async_database
 
 logger = logging.getLogger(__name__)

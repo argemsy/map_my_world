@@ -2,7 +2,7 @@
 import logging
 
 # Own Libraries
-from apps.map_my_world.models import Category as CategoryModel
+from apps.core.models import Category as CategoryModel
 from apps.utils.decorator import async_database
 
 logger = logging.getLogger(__name__)
