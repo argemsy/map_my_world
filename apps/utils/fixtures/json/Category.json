@@ -1,6 +1,6 @@
 [
   {
-    "model": "map_my_world.category",
+    "model": "core.category",
     "pk": 1,
     "fields": {
       "created_at": "2024-05-16T18:50:14.974Z",
@@ -12,7 +12,7 @@
     }
   },
   {
-    "model": "map_my_world.category",
+    "model": "core.category",
     "pk": 2,
     "fields": {
       "created_at": "2024-05-16T18:50:39.161Z",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "model": "map_my_world.category",
+    "model": "core.category",
     "pk": 3,
     "fields": {
       "created_at": "2024-05-16T18:50:49.139Z",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "map_my_world.category",
+    "model": "core.category",
     "pk": 4,
     "fields": {
       "created_at": "2024-05-16T18:51:06.709Z",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "model": "map_my_world.category",
+    "model": "core.category",
     "pk": 5,
     "fields": {
       "created_at": "2024-05-16T19:03:42.329Z",

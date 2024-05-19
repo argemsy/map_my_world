@@ -55,9 +55,9 @@ This results in the following running containers:
 ```bash
 docker compose ps
 NAME                    IMAGE               COMMAND                  SERVICE             CREATED             STATUS              PORTS
-map_my_world_api        map_my_world-api    "/bin/sh -c 'python …"   api                 3 seconds ago       Up 2 seconds        0.0.0.0:8500->8500/tcp
-map_my_world_postgres   postgres:latest     "docker-entrypoint.s…"   postgres            3 seconds ago       Up 2 seconds        0.0.0.0:5432->5432/tcp
-map_my_world_web        map_my_world-web    "bash -c 'python3 ma…"   web                 3 seconds ago       Up 2 seconds        0.0.0.0:8000->8000/tcp
+map_my_world_api        map_my_world-api    "/bin/sh -c 'python …"   api                 4 seconds ago       Up 3 seconds        0.0.0.0:8500->8500/tcp
+map_my_world_postgres   postgres:latest     "docker-entrypoint.s…"   postgres            4 seconds ago       Up 3 seconds        0.0.0.0:5432->5432/tcp
+map_my_world_web        map_my_world-web    "bash -c 'python3 ma…"   web                 4 seconds ago       Up 3 seconds        0.0.0.0:8000->8000/tcp
 ```
 
 #### The microservices are running at:

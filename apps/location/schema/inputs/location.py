@@ -6,19 +6,6 @@ from apps.location.schema.enums.location import LocationFieldEnum
 from apps.utils.enums import SortedOrderByFieldEnum
 
 
-class LocationOrderBy(BaseModel):
-    field: LocationFieldEnum
-    direction: SortedOrderByFieldEnum
-
-
-class LocationListInput(BaseModel):
-    limit: int | None = 10
-    offset: int | None = 0
-
-
-### Edition inputs
-
-
 class CreateLocationInput(BaseModel):
     country_id: PositiveInt
     city_id: PositiveInt

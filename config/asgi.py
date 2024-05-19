@@ -36,7 +36,7 @@ metadata_tags = [
 ]
 
 fastapp = FastAPI(
-    openapi_tags=[tag.dict(by_alias=True) for tag in metadata_tags],
+    openapi_tags=[tag.model_dump(by_alias=True) for tag in metadata_tags],
 )
 
 

@@ -17,6 +17,7 @@ class QueryCityProcess:
 
     @async_database()
     def get_city_and_country(self) -> dict[int, tuple[CityModel, CountryModel]]:
+        """Return index dict with tuple CityModel and CountryModel by city_id"""
         queryset = CityModel.objects.filter(is_deleted=False)
         return {city.id: (city, city.country) for city in queryset}
 
