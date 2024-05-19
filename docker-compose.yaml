@@ -46,9 +46,16 @@ services:
       - postgres
     command: bash -c "python3 manage.py runserver 0:8000"
 
+  redis:
+    container_name: ${COMPOSE_PROJECT_NAME}_redis
+    image: redis:latest
+    command: redis-server
+    depends_on:
+      - api
+
   postgres:
-    image: postgres:latest
     container_name: ${COMPOSE_PROJECT_NAME}_postgres
+    image: postgres:latest
     restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=postgres
