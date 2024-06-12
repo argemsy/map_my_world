@@ -2,6 +2,6 @@
 from django.apps import AppConfig
 
 
-class MapMyWorldConfig(AppConfig):
+class CoreConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.map_my_world"
+    name = "apps.core"

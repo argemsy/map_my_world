@@ -7,10 +7,10 @@ from pydantic import BaseModel, Field
 # Own Libraries
 from apps.location.schema.types.category import CategoryType
 from apps.location.schema.types.city import CityType
-from apps.map_my_world.models import Category as CategoryModel
-from apps.map_my_world.models import City as CityModel
-from apps.map_my_world.models import Country as CountryModel
-from apps.map_my_world.models import Location as LocationModel
+from apps.core.models import Category as CategoryModel
+from apps.core.models import City as CityModel
+from apps.core.models import Country as CountryModel
+from apps.core.models import Location as LocationModel
 from config.env_vars import settings
 
 

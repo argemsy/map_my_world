@@ -133,7 +133,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.DO_NOTHING,
                         related_name="cities_set",
-                        to="map_my_world.country",
+                        to="core.country",
                     ),
                 ),
             ],
@@ -192,7 +192,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.DO_NOTHING,
                         related_name="locations_set",
-                        to="map_my_world.city",
+                        to="core.city",
                     ),
                 ),
                 (
@@ -200,7 +200,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.DO_NOTHING,
                         related_name="locations_set",
-                        to="map_my_world.country",
+                        to="core.country",
                     ),
                 ),
             ],
@@ -246,7 +246,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.PROTECT,
                         related_name="locations_categories_set",
-                        to="map_my_world.category",
+                        to="core.category",
                     ),
                 ),
                 (
@@ -254,7 +254,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.PROTECT,
                         related_name="locations_categories_set",
-                        to="map_my_world.location",
+                        to="core.location",
                     ),
                 ),
             ],

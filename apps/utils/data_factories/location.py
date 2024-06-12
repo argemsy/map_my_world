@@ -3,7 +3,7 @@ import factory
 from factory.django import DjangoModelFactory
 
 # Own Libraries
-from apps.map_my_world.models import Location, LocationCategory
+from apps.core.models import Location, LocationCategory
 
 
 class LocationFactory(DjangoModelFactory):

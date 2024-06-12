@@ -11,8 +11,8 @@ from apps.location.process.city import CityProcess
 from apps.location.process.location_category import LocationCategoryProcess
 from apps.location.schema.inputs.location import LocationAddInput
 from apps.location.schema.types.location import LocationType
-from apps.map_my_world.models import Category as CategoryModel
-from apps.map_my_world.models import Location as LocationModel
+from apps.core.models import Category as CategoryModel
+from apps.core.models import Location as LocationModel
 from apps.utils.decorator import async_database
 
 

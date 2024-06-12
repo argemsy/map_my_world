@@ -16,6 +16,7 @@ build: ## Build Docker services
 	docker compose build
 up: pull build ## Run all services
 	docker compose up -d
+	make drop-db
 	make migrate
 	make ps
 ps: ## Show all services
@@ -60,3 +61,5 @@ bulk-loaddata: ## regenerate fixture over all models
 	docker exec -it map_my_world_web python3 manage.py loaddata apps/utils/fixtures/json/*.json
 collectstatic:
 	docker exec -it map_my_world_web python3 manage.py collectstatic --noinput
+drop-db: ## drop all tables in database
+	docker exec -it map_my_world_postgres psql -U postgres -d postgres -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"
